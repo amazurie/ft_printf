@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 11:17:05 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/12 17:23:38 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/24 15:59:12 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		set_arr(char **format, va_list *args, t_arg *sargs, char **buff)
 	len = ((**format) == 'i') ? handle_int(args, sargs, buff) : len;
 	len = ((**format) == 'u') ? handle_uint(args, sargs, buff) : len;
 	len = ((**format) == 'd') ? handle_int(args, sargs, buff) : len;
-	len = ((**format) == 'X') ? handle_hexa(format, args, sargs, buff) : len;
-	len = ((**format) == 'x') ? handle_hexa(format, args, sargs, buff) : len;
+	len = ((**format) == 'X') ? handle_hex(**format, args, sargs, buff) : len;
+	len = ((**format) == 'x') ? handle_hex(**format, args, sargs, buff) : len;
 	len = ((**format) == 'o') ? handle_octet(args, sargs, buff) : len;
 	sargs->length = (**format == 'O' || **format == 'D' || **format == 'U'
 			|| **format == 'p') ? '3' : sargs->length;

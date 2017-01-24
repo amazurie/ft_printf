@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 11:16:36 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/12 13:15:46 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/24 16:33:30 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ size_t	handle_octet(va_list *args, t_arg *sargs, char **buff)
 		if (sargs->width > 0)
 			sargs->width -= 1;
 		if (sargs->width != 0 && !sargs->left_adjust)
-			len += fill_nchar_buff(buff, ((sargs->zero_padding) ? '0' : ' '), sargs->width);
-		len += fill_nchar_buff(buff, '0', 1);
+			len += fill_nchar(buff, (sargs->zero_pad) ? '0' : ' ',
+					sargs->width);
+		len += fill_nchar(buff, '0', 1);
 		if (sargs->width != 0 && sargs->left_adjust)
-			len += fill_nchar_buff(buff, ' ', sargs->width);
+			len += fill_nchar(buff, ' ', sargs->width);
 		return (len);
 	}
 	if (sargs->alternate && (n || (sargs->is_prec && sargs->prec == 0)))
@@ -69,17 +70,17 @@ size_t	handle_octet(va_list *args, t_arg *sargs, char **buff)
 	return (print_num(n, "01234567", sargs, buff));
 }
 
-size_t	handle_hexa(char **format, va_list *args, t_arg *sargs, char **buff)
+size_t	handle_hex(char format, va_list *args, t_arg *sargs, char **buff)
 {
 	long	n;
 
 	n = get_uflags(args, sargs);
-	if (**format == 'x' && sargs->alternate && n)
+	if (format == 'x' && sargs->alternate && n)
 	{
 		sargs->sign = "0x";
 		return (print_num(n, "0123456789abcdef", sargs, buff));
 	}
-	else if (**format == 'x')
+	else if (format == 'x')
 	{
 		return (print_num(n, "0123456789abcdef", sargs, buff));
 	}

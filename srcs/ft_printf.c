@@ -6,51 +6,51 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 13:13:27 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/13 16:13:56 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/24 16:29:03 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	arg_handle(char **format, va_list *args, t_arg *sargs, char **buff)
+static size_t	arg_hand(char **form, va_list *args, t_arg *sargs, char **buff)
 {
 	size_t	len;
 
-	if (**format == '\0')
+	if (**form == '\0')
 		return (0);
-	parse_flags(format, sargs);
-	parse_width(format, args, sargs);
-	parse_length(format, sargs);
-	if (!*format)
+	parse_flags(form, sargs);
+	parse_width(form, args, sargs);
+	parse_length(form, sargs);
+	if (!*form)
 		return (0);
-	if (**format == '#' || **format == '-' || **format == '+' || **format == ' '
-		|| **format == '0' || **format == '*' || (**format >= '0' && **format <= '9') ||
-		**format == '.' || **format == 'h' || **format == 'l' || **format == 'j' ||
-		**format == 'z')
-		return (arg_handle(format, args, sargs, buff));
-	return (set_arr(format, args, sargs, buff));
+	if (**form == '#' || **form == '-' || **form == '+' || **form == ' '
+		|| **form == '0' || **form == '*' || (**form >= '0' && **form <= '9') ||
+		**form == '.' || **form == 'h' || **form == 'l' || **form == 'j' ||
+		**form == 'z')
+		return (arg_hand(form, args, sargs, buff));
+	return (set_arr(form, args, sargs, buff));
 }
 
-static size_t	inner(va_list *args, char *format, char **buff)
+static size_t	inner(va_list *args, char *form, char **buff)
 {
 	char	*arg;
 	size_t	len;
 	t_arg	sargs;
 
 	len = 0;
-	if (!(arg = ft_strchr(format, '%')))
-		len = buffcat(buff, format);
+	if (!(arg = ft_strchr(form, '%')))
+		len = buffcat(buff, form);
 	else
 	{
-		len = buffncat(buff, format, ft_strlen_chr(format, '%'));
-		format += ft_strlen_chr(format, '%');
+		len = buffncat(buff, form, ft_strlen_chr(form, '%'));
+		form += ft_strlen_chr(form, '%');
 	}
 	if (!arg)
 		return (len);
 	set_flags(&sargs);
-	format++;
-	len += arg_handle(&format, args, &sargs, buff);
-	return ((len + inner(args, format, buff)));
+	form++;
+	len += arg_hand(&form, args, &sargs, buff);
+	return ((len + inner(args, form, buff)));
 }
 
 int				ft_printf(const char *format, ...)

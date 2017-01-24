@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 15:30:06 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 15:18:12 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/24 16:30:26 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ size_t	fill_nstr_buff(char **buff, char *s, size_t n)
 	return (len);
 }
 
-size_t	fill_nchar_buff(char **buff, char c, size_t n)
+size_t	fill_nchar(char **buff, char c, size_t n)
 {
 	size_t	len;
 

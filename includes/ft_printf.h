@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 13:40:14 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/13 12:29:17 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/24 16:30:33 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_arg
 	int		is_sign;
 	char	*sign;
 	int		blank;
-	int		zero_padding;
+	int		zero_pad;
 	int		length;
 	size_t	width;
 	int		is_prec;
@@ -35,10 +35,10 @@ typedef struct	s_arg
 
 int				ft_printf(const char *format, ...);
 void			set_flags(t_arg *sargs);
-int				parse_flags(char **format, t_arg *sargs);
-int				parse_width(char **format, va_list *args, t_arg *sargs);
-int				parse_length(char **format, t_arg *sargs);
-int				set_arr(char **format, va_list *args, t_arg *sargs, char **buff);
+int				parse_flags(char **form, t_arg *sargs);
+int				parse_width(char **form, va_list *args, t_arg *sargs);
+int				parse_length(char **form, t_arg *sargs);
+int				set_arr(char **form, va_list *args, t_arg *sargs, char **buff);
 size_t			handle_str(va_list *args, t_arg *sargs, char **buff);
 size_t			handle_char(va_list *args, t_arg *sargs, char **buff);
 size_t			handle_modulo(t_arg *sargs, char **buff);
@@ -50,11 +50,11 @@ size_t			print_num(intmax_t n, char *base, t_arg*sargs, char **buff);
 intmax_t		get_flags(va_list *args, t_arg *sargs);
 uintmax_t		get_uflags(va_list *args, t_arg *sargs);
 size_t			handle_octet(va_list *args, t_arg *sargs, char **buff);
-size_t			handle_hexa(char **format, va_list *args, t_arg *sargs, char **buff);
+size_t			handle_hex(char form, va_list *args, t_arg *sargs, char **buff);
 size_t			handle_pointer(va_list *args, t_arg *sargs, char **buff);
-size_t			print_invalid(char **format, t_arg *sargs, int len, char **buff);
+size_t			print_invalid(char **form, t_arg *sargs, int len, char **buff);
 size_t			fill_nstr_buff(char **buff, char *s, size_t n);
-size_t			fill_nchar_buff(char **buff, char c, size_t n);
+size_t			fill_nchar(char **buff, char c, size_t n);
 size_t			print_buff(char **buff);
 size_t			buffcat(char **buff, char *s);
 size_t			buffncat(char **buff, char *s, size_t n);
