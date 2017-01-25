@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 11:16:36 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 16:33:30 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/25 12:07:37 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ size_t	handle_int(va_list *args, t_arg *sargs, char **buff)
 {
 	intmax_t	n;
 	size_t		len;
-	char		*sign;
 
 	sargs->sign = 0;
 	n = get_flags(args, sargs);

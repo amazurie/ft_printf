@@ -6,13 +6,13 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 16:16:02 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 16:35:46 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/25 12:08:02 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	print_bef(intmax_t n, t_arg *sargs, char **buff, size_t len)
+static size_t	print_bef(t_arg *sargs, char **buff, size_t len)
 {
 	size_t strlen;
 
@@ -39,13 +39,13 @@ size_t			print_num(intmax_t n, char *base, t_arg *sargs, char **buff)
 	len += (sargs->sign) ? ft_strlen(sargs->sign) : 0;
 	if (!n && sargs->width && sargs->is_prec && !sargs->prec)
 		sargs->width += lennbase;
-	strlen = print_bef(n, sargs, buff, len);
+	strlen = print_bef(sargs, buff, len);
 	if (sargs->is_prec && sargs->prec > lennbase)
 		strlen += fill_nchar(buff, '0', sargs->prec - lennbase);
 	if (n || !sargs->is_prec || sargs->prec)
 	{
 		tmp = ft_itoa_base(n, base);
-		strlen += buffcat(buff, ft_itoa_base(n, base));
+		strlen += buffcat(buff, tmp);
 		free(tmp);
 	}
 	else

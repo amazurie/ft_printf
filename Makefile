@@ -6,7 +6,7 @@
 #    By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by jmoucade          #+#    #+#              #
-#    Updated: 2017/01/24 15:48:18 by amazurie         ###   ########.fr        #
+#    Updated: 2017/01/25 12:06:42 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 CC = gcc
 AR = ar -rcs
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 INC_PATH = includes
 SRC_PATH = srcs
@@ -55,9 +55,7 @@ SRC =	$(SRC_PATH)/ft_printf.c	\
 		$(SRC_PATH)/buff_handle.c	\
 		$(SRC_PATH)/getflags.c
 
-MAINTEST = $(SRC_PATH)/main.c
 
-TESTSRC = $(MAINTEST:.c=.o)
 OSRC = $(SRC:.c=.o)
 OHSRC = $(HANDLE_SRC:.c=.o)
 LIBFTSRC = $(LIBFT_SRC:.c=.o)
@@ -77,15 +75,11 @@ $(NAME): $(OSRC) $(OHSRC) $(LIBFTSRC)
 	@$(CC) $(CFLAGS) -I $(LIB_INC_PATH) -I $(INC_PATH) -c -o $@ $?
 	@echo "Linking file $@"
 
-libtest: $(OSRC) $(OHSRC) $(LIBFTSRC) $(TESTSRC)
-	@$(CC) $(TEST_SRC) $^
-
 clean:
 	@make -C libft clean
 	@/bin/rm -f $(OSRC)
 	@/bin/rm -f $(OHSRC)
 	@/bin/rm -f $(LIBFTSRC)
-	@/bin/rm -f $(TESTSRC)
 	@echo "Cleaning temporary files."
 
 fclean: clean

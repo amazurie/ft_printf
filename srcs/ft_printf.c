@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 13:13:27 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 16:29:03 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/25 12:07:09 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static size_t	arg_hand(char **form, va_list *args, t_arg *sargs, char **buff)
 {
-	size_t	len;
-
 	if (**form == '\0')
 		return (0);
 	parse_flags(form, sargs);
