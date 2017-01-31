@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 15:30:06 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 16:30:26 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/01/31 14:06:16 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ size_t	fill_nchar(char **buff, char c, size_t n)
 	{
 		len = print_buff(buff);
 		while (n--)
-			*buff[n] = c;
+			buff[0][n] = c;
 	}
 	else
 	{
