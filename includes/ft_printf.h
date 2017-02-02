@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 13:40:14 by amazurie          #+#    #+#             */
-/*   Updated: 2017/02/02 11:07:44 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/02/02 13:51:15 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <stdio.h>
 # include <locale.h>
 
