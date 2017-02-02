@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 13:40:14 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/24 16:30:33 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/02/02 11:07:44 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ size_t			handle_octet(va_list *args, t_arg *sargs, char **buff);
 size_t			handle_hex(char form, va_list *args, t_arg *sargs, char **buff);
 size_t			handle_pointer(va_list *args, t_arg *sargs, char **buff);
 size_t			print_invalid(char **form, t_arg *sargs, int len, char **buff);
-size_t			fill_nstr_buff(char **buff, char *s, size_t n);
 size_t			fill_nchar(char **buff, char c, size_t n);
 size_t			print_buff(char **buff);
 size_t			buffcat(char **buff, char *s);

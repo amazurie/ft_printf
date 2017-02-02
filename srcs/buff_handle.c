@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 15:30:06 by amazurie          #+#    #+#             */
-/*   Updated: 2017/01/31 14:06:16 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/02/02 11:07:34 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,6 @@ size_t	buffncat(char **buff, char *s, size_t n)
 	else
 	{
 		len = print_buff(buff) + ((ft_strlen(s) >= n) ? n : ft_strlen(s));
-		ft_putnstr(s, n);
-	}
-	return (len);
-}
-
-size_t	fill_nstr_buff(char **buff, char *s, size_t n)
-{
-	char	*buf;
-	size_t	len;
-
-	len = 0;
-	if (ft_strlen(*buff) + n < 1000)
-		buf = ft_strncat(*buff, s, n);
-	else if (n < 1000)
-	{
-		len = print_buff(buff);
-		*buff = ft_strncat(*buff, s, n);
-	}
-	else
-	{
-		len = print_buff(buff) + n;
 		ft_putnstr(s, n);
 	}
 	return (len);
